@@ -6,12 +6,21 @@ import HeroScene from "@/components/3d/HeroScene";
 import MagneticButton from "@/components/ui/MagneticButton";
 
 export default function Home() {
+  const photoRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.5 });
+
+    if (photoRef.current) {
+      tl.fromTo(
+        photoRef.current,
+        { opacity: 0, scale: 0.8, y: -30 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "back.out(1.7)" }
+      );
+    }
 
     if (titleRef.current) {
       const words = titleRef.current.innerText.split(" ");
@@ -29,7 +38,8 @@ export default function Home() {
           stagger: 0.1,
           duration: 0.8,
           ease: "power3.out",
-        }
+        },
+        "-=0.4"
       );
     }
 
@@ -62,6 +72,17 @@ export default function Home() {
           <span className="text-sm font-mono text-neon-cyan">
             Full-Stack Developer
           </span>
+        </div>
+
+        <div ref={photoRef} className="mb-8 relative">
+          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-neon-cyan bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 flex items-center justify-center shadow-neon-cyan overflow-hidden ring-4 ring-neon-cyan/20">
+            <img 
+              src="/profile-photo.jpg" 
+              alt="Himanshu Prakash" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-neon-green border-2 border-black shadow-neon-green animate-pulse" />
         </div>
 
         <h1

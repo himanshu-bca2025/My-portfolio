@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { User, Briefcase, GraduationCap } from "lucide-react";
+import { Briefcase, GraduationCap } from "lucide-react";
 import SectionTitle from "@/components/ui/SectionTitle";
 import SkillChip from "@/components/ui/SkillChip";
 import TimelineItem from "@/components/ui/TimelineItem";
@@ -44,8 +44,12 @@ export default function About() {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="relative inline-block mb-8">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-neon-cyan bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 flex items-center justify-center shadow-neon-cyan">
-              <User className="w-16 h-16 md:w-20 md:h-20 text-neon-cyan" />
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-neon-cyan bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 flex items-center justify-center shadow-neon-cyan overflow-hidden">
+              <img 
+                src="/profile-photo.jpg" 
+                alt="Himanshu Prakash" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-neon-green border-2 border-black shadow-neon-green" />
           </div>
