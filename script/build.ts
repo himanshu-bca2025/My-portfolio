@@ -33,35 +33,46 @@ const allowlist = [
 ];
 
 async function buildAll() {
-  await rm("dist", { recursive: true, force: true });
+  try {
+    await rm("dist", { recursive: true, force: true });
 
-  console.log("building client...");
-  await viteBuild();
+    console.log("building client...");
+    await viteBuild();
+    console.log("✓ Client build complete!");
 
-  console.log("building server...");
-  const pkg = JSON.parse(await readFile("package.json", "utf-8"));
-  const allDeps = [
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.devDependencies || {}),
-  ];
-  const externals = allDeps.filter((dep) => !allowlist.includes(dep));
+    // Only build server if not in Vercel/Netlify environment
+    if (process.env.VERCEL !== "1" && process.env.NETLIFY !== "true") {
+      console.log("building server...");
+      const pkg = JSON.parse(await readFile("package.json", "utf-8"));
+      const allDeps = [
+        ...Object.keys(pkg.dependencies || {}),
+        ...Object.keys(pkg.devDependencies || {}),
+      ];
+      const externals = allDeps.filter((dep) => !allowlist.includes(dep));
 
-  await esbuild({
-    entryPoints: ["server/index.ts"],
-    platform: "node",
-    bundle: true,
-    format: "cjs",
-    outfile: "dist/index.cjs",
-    define: {
-      "process.env.NODE_ENV": '"production"',
-    },
-    minify: true,
-    external: externals,
-    logLevel: "info",
-  });
+      await esbuild({
+        entryPoints: ["server/index.ts"],
+        platform: "node",
+        bundle: true,
+        format: "cjs",
+        outfile: "dist/index.cjs",
+        define: {
+          "process.env.NODE_ENV": '"production"',
+        },
+        minify: true,
+        external: externals,
+        logLevel: "info",
+      });
+      console.log("✓ Server build complete!");
+    } else {
+      console.log("Skipping server build (static deployment)");
+    }
+
+    console.log("✓ Build complete!");
+  } catch (err) {
+    console.error("Build failed:", err);
+    process.exit(1);
+  }
 }
 
-buildAll().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+buildAll();
