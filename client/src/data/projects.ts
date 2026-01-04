@@ -12,119 +12,121 @@ export interface Project {
   role: string;
 }
 
+export interface Certificate {
+  id: string;
+  name: string;
+  issuer: string;
+  file?: string;
+}
+
 export const projects: Project[] = [
   {
-    id: "neon-dashboard",
-    title: "Neon Dashboard",
-    description: "Real-time analytics dashboard with WebGL visualizations and live data streaming.",
-    longDescription: "A comprehensive analytics platform featuring real-time data visualization using WebGL, custom charts, and interactive dashboards. Built for high-performance data monitoring and business intelligence.",
-    techStack: ["React", "Three.js", "WebSocket", "D3.js", "Node.js"],
+    id: "portfolio-website",
+    title: "Personal Portfolio Website",
+    description: "Modern, responsive portfolio website showcasing projects, skills, and achievements.",
+    longDescription: "A professional portfolio website built with React and TypeScript, featuring a clean design, responsive layout, and smooth user experience. Includes sections for projects, skills, education, experience, and certificates.",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Vite", "Node.js"],
     category: "web",
-    liveUrl: "https://example.com/neon-dashboard",
-    githubUrl: "https://github.com/yourusername/neon-dashboard",
+    liveUrl: "https://himanshu-portfolio.vercel.app",
+    githubUrl: "https://github.com/himanshu-bca2025/My-portfolio",
     imageUrl: "/placeholder-project.jpg",
-    features: ["Real-time data streaming", "Custom WebGL charts", "Dark mode UI", "Responsive design"],
+    features: ["Responsive design", "Modern UI", "Fast performance", "SEO optimized"],
     role: "Full-Stack Developer"
   },
   {
-    id: "cyber-portfolio",
-    title: "Cyber Portfolio",
-    description: "Immersive 3D portfolio experience with particle systems and interactive navigation.",
-    longDescription: "An avant-garde portfolio website featuring immersive 3D environments, particle-based navigation, and dynamic content loading. Pushes the boundaries of web-based 3D experiences.",
-    techStack: ["Next.js", "Three.js", "GSAP", "Framer Motion", "TypeScript"],
-    category: "3d",
-    liveUrl: "https://example.com/cyber-portfolio",
-    githubUrl: "https://github.com/yourusername/cyber-portfolio",
-    imageUrl: "/placeholder-project.jpg",
-    features: ["3D particle systems", "Smooth page transitions", "Interactive scenes", "Performance optimized"],
-    role: "Creative Developer"
-  },
-  {
-    id: "synthwave-player",
-    title: "Synthwave Player",
-    description: "Audio-reactive music player with procedural visuals and beat detection.",
-    longDescription: "A cutting-edge music player that generates procedural visuals synchronized with audio input. Features real-time beat detection and customizable visual presets.",
-    techStack: ["React", "Web Audio API", "Canvas", "GLSL Shaders"],
-    category: "experimental",
-    liveUrl: "https://example.com/synthwave-player",
-    githubUrl: "https://github.com/yourusername/synthwave-player",
-    imageUrl: "/placeholder-project.jpg",
-    features: ["Beat detection", "Procedural visuals", "Custom shaders", "Playlist support"],
-    role: "Creative Technologist"
-  },
-  {
-    id: "rave-commerce",
-    title: "Rave Commerce",
-    description: "E-commerce platform with immersive product showcases and AR try-on.",
-    longDescription: "A next-generation e-commerce experience featuring 3D product visualization, augmented reality try-on functionality, and a seamless checkout process.",
-    techStack: ["Next.js", "Three.js", "Stripe", "PostgreSQL", "WebXR"],
+    id: "web-app",
+    title: "Web Application Project",
+    description: "Full-stack web application with user authentication and data management.",
+    longDescription: "A comprehensive web application built with React and Node.js, featuring user authentication, CRUD operations, and responsive design. Demonstrates proficiency in modern web development practices.",
+    techStack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
     category: "web",
-    liveUrl: "https://example.com/rave-commerce",
-    githubUrl: "https://github.com/yourusername/rave-commerce",
+    liveUrl: "https://example.com/web-app",
+    githubUrl: "https://github.com/himanshu-bca2025/web-app",
     imageUrl: "/placeholder-project.jpg",
-    features: ["3D product viewer", "AR try-on", "Secure payments", "Inventory management"],
-    role: "Lead Developer"
+    features: ["User authentication", "CRUD operations", "RESTful API", "Database integration"],
+    role: "Full-Stack Developer"
   },
   {
-    id: "neural-art",
-    title: "Neural Art Generator",
-    description: "AI-powered art generation tool with style transfer and real-time rendering.",
-    longDescription: "An experimental project combining machine learning with real-time graphics. Users can generate unique artworks using neural style transfer and export high-resolution outputs.",
-    techStack: ["Python", "TensorFlow", "React", "WebGL", "FastAPI"],
+    id: "student-dbms",
+    title: "Student Database Management System",
+    description: "Complete C program for managing student records with CRUD operations and file persistence.",
+    longDescription: "A comprehensive Student Database Management System built in C programming. Features include adding new student records, editing existing records, deleting records, updating student information, and saving data to file. The system uses file handling for data persistence and includes input validation and error handling.",
+    techStack: ["C Programming", "File Handling", "Data Structures", "CRUD Operations"],
     category: "experimental",
-    liveUrl: "https://example.com/neural-art",
-    githubUrl: "https://github.com/yourusername/neural-art",
+    liveUrl: "",
+    githubUrl: "https://github.com/himanshu-bca2025/C---Programs",
     imageUrl: "/placeholder-project.jpg",
-    features: ["Style transfer", "Real-time preview", "High-res export", "Custom models"],
-    role: "ML Engineer"
-  },
-  {
-    id: "hologram-ui",
-    title: "Hologram UI Kit",
-    description: "Futuristic UI component library with holographic effects and animations.",
-    longDescription: "A comprehensive UI kit featuring holographic-style components, animated transitions, and modular design patterns. Perfect for creating sci-fi themed interfaces.",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Storybook"],
-    category: "3d",
-    liveUrl: "https://example.com/hologram-ui",
-    githubUrl: "https://github.com/yourusername/hologram-ui",
-    imageUrl: "/placeholder-project.jpg",
-    features: ["50+ components", "Dark theme", "Animation presets", "Storybook docs"],
-    role: "UI/UX Developer"
+    features: ["Add Student Records", "Edit Student Information", "Delete Records", "Update Student Data", "Save to File", "Load from File", "Search Functionality", "Input Validation"],
+    role: "Software Developer"
   }
 ];
 
 export const skills = [
-  "HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", 
-  "GSAP", "Three.js", "WebGL", "Node.js", "Express", "MongoDB", 
-  "Firebase", "Git & GitHub"
+  "HTML", "CSS", "JavaScript", "C Programming", "React", "Node.js", 
+  "Express", "MongoDB", "Git & GitHub", "LibreOffice", "Web Development",
+  "Cloud Computing", "Responsive Design", "UI/UX Design"
 ];
 
 export const education = [
   {
-    degree: "B.Tech in Computer Science",
-    institution: "Technical University",
-    year: "2019 - 2023",
-    description: "Focused on web technologies, computer graphics, and software engineering."
+    degree: "Bachelor of Computer Applications (BCA)",
+    institution: "University/College",
+    year: "2022 - 2025",
+    description: "Pursuing Bachelor's degree in Computer Applications with focus on programming, web development, and software engineering fundamentals."
   }
 ];
 
 export const experience = [
   {
-    title: "Freelance Developer",
-    company: "Self-Employed",
-    year: "2022 - Present",
-    description: "Worked on modern web apps, landing pages, and animated experiences for various clients."
+    title: "Web Developer",
+    company: "Freelance",
+    year: "2023 - Present",
+    description: "Developing responsive web applications and portfolios using modern technologies like React, Node.js, and cloud platforms. Creating efficient and user-friendly digital solutions."
   },
   {
-    title: "Web Designer",
-    company: "Creative Agency",
-    year: "2021 - 2022",
-    description: "Designed and implemented responsive UI with focus on motion and interactivity."
+    title: "Student Developer",
+    company: "Academic Projects",
+    year: "2022 - Present",
+    description: "Working on various academic and personal projects to enhance programming skills and gain practical experience in full-stack development."
+  }
+];
+
+export const certificates = [
+  {
+    id: "ethical-hacking",
+    name: "Ethical Hacking Certificate",
+    issuer: "Certification Authority",
+    file: "/certificates/himanshu-ethical-certificate.jpg"
+  },
+  {
+    id: "c-programming",
+    name: "C Programming Certificate",
+    issuer: "Certification Authority",
+    file: "/certificates/HIMANSHU-Certificate-C.pdf"
+  },
+  {
+    id: "html",
+    name: "HTML Certificate",
+    issuer: "Certification Authority",
+    file: "/certificates/HIMANSHU-Certificate-HTML.pdf"
+  },
+  {
+    id: "javascript",
+    name: "JavaScript Certificate",
+    issuer: "Certification Authority",
+    file: "/certificates/HIMANSHU-Certificate-JS.pdf"
+  },
+  {
+    id: "libreoffice",
+    name: "LibreOffice Certificate",
+    issuer: "Certification Authority",
+    file: "/certificates/HIMANSHU-Certificate-Libra-Office.pdf"
   }
 ];
 
 export const socialLinks = {
-  email: "your-email@example.com",
-  github: "https://github.com/yourusername",
-  linkedin: "https://linkedin.com/in/yourusername"
+  email: "himanshuking671@gmail.com",
+  phone: "+91-9508729728",
+  github: "https://github.com/himanshu-bca2025/My-portfolio",
+  linkedin: "https://www.linkedin.com/in/himanshu-bca2025"
 };

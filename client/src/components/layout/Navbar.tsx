@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import gsap from "gsap";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -15,8 +14,6 @@ export default function Navbar() {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
-  const linksRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,23 +23,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (linksRef.current) {
-      gsap.fromTo(
-        linksRef.current.children,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, stagger: 0.1, duration: 0.5, ease: "power2.out", delay: 0.5 }
-      );
-    }
-  }, []);
-
   return (
     <nav
-      ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-black/80 backdrop-blur-md border-b border-neon-cyan/20"
-          : "bg-transparent"
+          ? "bg-background/95 backdrop-blur-md border-b border-border"
+          : "bg-background/80"
       }`}
       data-testid="navbar"
     >
@@ -51,29 +37,27 @@ export default function Navbar() {
           <Link href="/">
             <div
               className="flex items-center gap-2 cursor-pointer group"
-              data-cursor="Home"
               data-testid="nav-logo"
             >
-              <Zap className="w-6 h-6 text-neon-cyan group-hover:text-neon-magenta transition-colors" />
-              <span className="font-serif font-bold text-xl text-glow-cyan">HP</span>
+              <Code className="w-6 h-6 text-primary group-hover:text-primary/80 transition-colors" />
+              <span className="font-bold text-xl text-foreground">HP</span>
             </div>
           </Link>
 
-          <div ref={linksRef} className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <Link key={item.path} href={item.path}>
                 <span
-                  className={`relative font-mono text-sm tracking-wider cursor-pointer transition-colors ${
+                  className={`relative text-sm font-medium cursor-pointer transition-colors ${
                     location === item.path
-                      ? "text-neon-cyan"
-                      : "text-foreground/70 hover:text-neon-cyan"
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
-                  data-cursor="View"
                   data-testid={`nav-link-${item.label.toLowerCase()}`}
                 >
                   {item.label}
                   {location === item.path && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-px bg-neon-cyan shadow-neon-cyan" />
+                    <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary" />
                   )}
                 </span>
               </Link>
@@ -93,15 +77,15 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-neon-cyan/20">
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border">
           <div className="px-4 py-6 space-y-4">
             {navItems.map((item) => (
               <Link key={item.path} href={item.path}>
                 <div
-                  className={`block py-2 font-mono text-sm tracking-wider ${
+                  className={`block py-2 text-sm font-medium ${
                     location === item.path
-                      ? "text-neon-cyan"
-                      : "text-foreground/70"
+                      ? "text-primary"
+                      : "text-muted-foreground"
                   }`}
                   onClick={() => setIsOpen(false)}
                   data-testid={`nav-mobile-link-${item.label.toLowerCase()}`}

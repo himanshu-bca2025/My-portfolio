@@ -64,25 +64,24 @@ export default function CustomCursor() {
     <>
       <div
         ref={cursorDot}
-        className={`fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 transition-all duration-150 ${
+        className={`fixed top-0 left-0 w-1.5 h-1.5 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ${
           isHovering
-            ? "bg-neon-magenta scale-150"
-            : "bg-neon-cyan"
+            ? "bg-primary scale-125"
+            : "bg-primary/80"
         }`}
-        style={{ mixBlendMode: "difference" }}
         data-testid="cursor-dot"
       />
       <div
         ref={cursorOutline}
         className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 border transition-all duration-300 flex items-center justify-center ${
           isHovering
-            ? "w-20 h-20 border-neon-magenta bg-neon-magenta/10"
-            : "w-8 h-8 border-neon-cyan/50 bg-transparent"
+            ? "w-16 h-16 border-primary/40 bg-primary/5"
+            : "w-6 h-6 border-primary/20 bg-transparent"
         }`}
         data-testid="cursor-outline"
       >
         {cursorText && (
-          <span className="text-[10px] font-mono text-neon-magenta uppercase tracking-wider">
+          <span className="text-[10px] font-mono text-primary uppercase tracking-wider">
             {cursorText}
           </span>
         )}
